@@ -1,5 +1,18 @@
-extends layout
-
+extends header
 block content
-  h1= title
-  p Welcome to #{title}
+	link(rel='stylesheet', href='/css/index.css')
+	div#app
+		el-table(:data="list")
+			el-table-column(prop="password" label="password")
+			el-table-column(prop="name" label="name")
+			el-table-column(prop="age" label="age")
+	include footer
+		script(type='text/javascript').
+			new Vue({
+				el: '#app',
+				data: function() {
+					return {
+						list: !{data.list}
+					}
+				}
+			})

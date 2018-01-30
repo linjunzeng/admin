@@ -1,0 +1,72 @@
+extends header
+
+block content
+	h2 添加数据
+	form(action="add" method="post")
+		div(style="margin-top: 10px")
+			input(type="text" name="name" placeholder="name")
+		div(style="margin-top: 10px")
+			input(type="text" name="password" placeholder="password")
+		div(style="margin-top: 10px")
+			input(type="text" name="age" placeholder="age")
+		div(style="margin-top: 10px")
+			input(type="submit" value="确定")
+
+	h2 删除数据
+	form(action="del" method="post")
+		div(style="margin-top: 10px")
+			select(name="name")
+				each item in data.list
+					option #{item.name} 
+		div(style="margin-top: 10px")
+			input(type="submit" value="确定")
+	
+	h2 修改数据
+	form(action="updata" method="post")
+		div(style="margin-top: 10px")
+			select(name="name_old")
+				each item in data.list
+					option #{item.name} 
+		div(style="margin-top: 10px")
+			input(type="text" name="name" placeholder="name")
+		div(style="margin-top: 10px")
+			input(type="text" name="password" placeholder="password")
+		div(style="margin-top: 10px")
+			input(type="text" name="age" placeholder="age")
+		div(style="margin-top: 10px")
+			input(type="submit" value="确定")
+
+	h2 查找数据
+	form(action="find" method="post")
+		div(style="margin-top: 10px")
+			select(name="name")
+				option(value="") 请选择 
+				each item in data.list
+					option #{item.name} 
+		div(style="margin-top: 10px")
+			select(name="password")
+				option(value="") 请选择 
+				each item in data.list
+					option #{item.password} 
+		div(style="margin-top: 10px")
+			select(name="age")
+				option(value="") 请选择 
+				each item in data.list
+					option #{item.age} 
+
+		div(style="margin-top: 10px")
+			input(type="submit" value="确定")
+		
+
+	table(border="1" style="margin-top: 10px;")
+		-if(data.list.length){
+			each item in data.list
+				tr 
+					td(width="100") #{item.name} 
+					td(width="100") #{item.password} 
+					td(width="100") #{item.age}
+		-}else{
+			tr 
+				td(width="100") 没有数据 
+		-}		 
+	h2 #{msg}
