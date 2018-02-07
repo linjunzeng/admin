@@ -1,12 +1,12 @@
 'use strict';
-var modelAdmin = require('../../models/admin/modelAdmin');
+var adminModels = require('../../models/admin/adminModels');
 
-class controlleAdmin {
+class AdminControlle {
 	constructor(props) {
 
 	}
 	index(req, res, next){
-		modelAdmin.find(function(err, result){
+		adminModels.find(function(err, result){
 			res.render('index', {
 				code: 1,
 				data: {
@@ -17,7 +17,7 @@ class controlleAdmin {
 		})
 	}
 	list(req, res, next){
-		modelAdmin.find(function(err, result){
+		adminModels.find(function(err, result){
 			res.render('list', {
 				code: 1,
 				data: {
@@ -30,7 +30,7 @@ class controlleAdmin {
 	add(req, res, next){
 		let form = req.body;
 		if(form){
-			var monInsert = new modelAdmin(form);
+			var monInsert = new adminModels(form);
 			monInsert.save(function(err,result){
 				console.log(err);
 				console.log(result)
@@ -43,7 +43,7 @@ class controlleAdmin {
 	del(req, res, next){
 		let form = req.body;
 		if(form){
-			modelAdmin.remove(form, function(err, result){
+			adminModels.remove(form, function(err, result){
 				console.log(result)
 				res.redirect('./list');
 			});
@@ -59,7 +59,7 @@ class controlleAdmin {
 					delete form[i]
 				}
 			}
-			modelAdmin.update({name: form.name_old}, {$set: form}, function(err, result){
+			adminModels.update({name: form.name_old}, {$set: form}, function(err, result){
 				console.log(result)
 				res.redirect('./list');
 			});
@@ -74,7 +74,7 @@ class controlleAdmin {
 				delete form[i]
 			}
 		}
-		modelAdmin.find(form, {}, function(err, result){
+		adminModels.find(form, {}, function(err, result){
 			console.log(result)
 			res.render('list', {
 				code: 1,
@@ -87,4 +87,4 @@ class controlleAdmin {
 	}
 }
 
-module.exports = new controlleAdmin()
+module.exports = new AdminControlle()

@@ -1,0 +1,14 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/css/common.css')
+        link(rel='stylesheet', href='/bin/css/element.css')
+        block css
+    body
+        el-container
+            include ./header
+            el-main
+                block content
+            include ./footer
+            block script
