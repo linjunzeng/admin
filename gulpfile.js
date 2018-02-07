@@ -1,4 +1,4 @@
-var gulp = require('gulp'), 
+var gulp = require('gulp'),
     less = require('gulp-less'),
     minify = require('gulp-clean-css'),
     nodemon = require('gulp-nodemon'),
@@ -14,18 +14,18 @@ var knownOptions = {
 	default: { env: process.env.NODE_ENV || '' }
 }
 var options = minimist(process.argv.slice(2), knownOptions),
-	nodemon = options.env && nodemon({ 
+	nodemon = options.env && nodemon({
 		script: './bin/www',
-		ignore: ['gulpfile.js', 'node_modules/**'], 
-		env: { 'NODE_ENV': options.env } 
-	}).on('start', function() { 
-		browserSync.init({ 
-	 		proxy: 'http://localhost:8889/admin', 
-	 		files: ['public/**/*.*', 'views/**', 'routes/**'], 
-	 		port:8080 
-	 	}, function() { 
-	 		console.log('服务器启动'); 
-	 	});	 
+		ignore: ['gulpfile.js', 'node_modules/**'],
+		env: { 'NODE_ENV': options.env }
+	}).on('start', function() {
+		browserSync.init({
+	 		proxy: 'http://localhost:8889',
+	 		files: ['public/**/*.*', 'views/**', 'routes/**'],
+	 		port:8080
+	 	}, function() {
+	 		console.log('服务器启动');
+	 	});
 	});
 
 if(options.env == 'dev'){
@@ -36,12 +36,12 @@ if(options.env == 'dev'){
 	})
 
 	gulp.task('less', ['clear'], function() {
-		return gulp.src('public/less/**/*.less')
+		return gulp.src(['public/less/**/*.less','!public/less/var.less'])
 			.pipe(less())
 			.pipe(gulp.dest('public/css/'))
 	})
 
-	gulp.task('server', ['less'], function() { 
+	gulp.task('server', ['less'], function() {
 		return nodemon
 	});
 
@@ -80,7 +80,7 @@ if(options.env == 'dev'){
 			.pipe(gulp.dest('dist/img/'))
 	})
 
-	gulp.task('server', ['bin', 'less', 'js', 'img'], function() { 
+	gulp.task('server', ['bin', 'less', 'js', 'img'], function() {
 		return nodemon
 	});
 
@@ -102,7 +102,7 @@ if(options.env){
 		console.log('模拟生产环境 --> 构建开始');
 			gulp.task('default', ['bin', 'less', 'js', 'img', 'server', 'watchFile'], function(){
 		});
-	}	
+	}
 }else{
 	console.log('打包环境 --> 构建开始');
 	gulp.task('default', ['bin', 'less', 'js', 'img'], function(){

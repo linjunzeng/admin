@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "dev": "gulp --env dev",
+    "prod": "gulp --env prod",
+    "build": "gulp",
     "start": "nodemon ./bin/www"
   },
   "dependencies": {

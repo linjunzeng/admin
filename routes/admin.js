@@ -1,27 +1,28 @@
 var router = require('express').Router();
-var ControlleAdmin =  require('../controller/admin/controlleAdmin'); 
+var AdminControlle =  require('../controller/admin/AdminControlle'); 
+var GoodsControlle =  require('../controller/admin/GoodsControlle'); 
 
 //登录,注册
-//router.get('/login', ControlleAdmin.login);
-//router.get('/register', ControlleAdmin.register);
+//router.get('/login', AdminControlle.login);
+//router.get('/register', AdminControlle.register);
 
-//首页
+
 //router.use(isLogin(req, res, next));
 
+//首页
 router.get('/', (req, res, next) => {
-	res.redirect('/admin/index')
+	res.redirect('/index')
 });
 
-router.get('/index', ControlleAdmin.index);
+router.get('/index', AdminControlle.index);
 
+router.get('/list', AdminControlle.list);
+router.post('/add', AdminControlle.add);
+router.post('/del', AdminControlle.del);
+router.post('/updata', AdminControlle.updata);
+router.post('/find', AdminControlle.find);
 
-
-router.get('/list', ControlleAdmin.list);
-router.post('/add', ControlleAdmin.add);
-router.post('/del', ControlleAdmin.del);
-router.post('/updata', ControlleAdmin.updata);
-router.post('/find', ControlleAdmin.find);
-
-
+//商品
+router.get('/goods/add', GoodsControlle.addGoods);
 
 module.exports = router
