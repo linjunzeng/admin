@@ -1,0 +1,23 @@
+include ./header
+div.layui-layout.layui-layout-admin
+    div.layui-header.header.clearfix
+        a.logo.fl(href="/index")
+            img(src="/img/logo.png")
+        div.icon.fr
+            i.head-portrait.iconfont &#xe60d;
+            span.user-name 用户1
+            span.hr
+            i.return.iconfont(title="退出登录") &#xe673;
+    include ./menu
+    div.layui-body
+        div.layui-tab.layui-tab-card(lay-allowClose="true" lay-filter="tab")
+            ul.layui-tab-title
+                li.layui-this
+                    林先森
+            div.layui-tab-content
+                div.layui-tab-item.layui-show
+                    div.content
+                        自己定义
+    div.footer.layui-footer
+        © 2018 <a href="https://github.com/linjunzeng/admin">https://github.com/linjunzeng/admin</a>
+include ./footer

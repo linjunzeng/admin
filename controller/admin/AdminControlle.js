@@ -7,9 +7,10 @@ class AdminControlle {
 	}
 	index(req, res, next){
 		adminModels.find(function(err, result){
-			res.render('index', {
+			res.render('./layouts/index', {
 				code: 1,
 				data: {
+                    title: '林先森',
 					list: JSON.stringify(result)
 				},
 				msg: '获取成功'
