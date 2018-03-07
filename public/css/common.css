@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   border: 0 none;
-  box-sizing: border-box;
 }
 body {
   min-width: 1000px;
@@ -17,6 +16,7 @@ body .header {
   border-bottom: solid 4px #1fb5ac;
   background: #393d49;
   color: #c2c2c2;
+  box-sizing: border-box;
 }
 body .header .logo {
   width: 112px;
@@ -49,6 +49,19 @@ body .footer {
 }
 body .content {
   padding: 10px;
+}
+body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+body::-webkit-scrollbar-thumb {
+  border-radius: 0px;
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.3);
+}
+body::-webkit-scrollbar-track {
+  border-radius: 0;
+  background: #e2e2e2;
 }
 ul,
 li {
@@ -97,8 +110,8 @@ a {
   -moz-osx-font-smoothing: grayscale;
 }
 /* 框架样式覆盖 */
-.layui-tab-content {
-  padding: 0;
+.layui-layout-admin .layui-body {
+  overflow: hidden;
 }
 .layui-tab-card {
   position: absolute;
@@ -108,4 +121,66 @@ a {
   bottom: 0;
   margin: auto;
   background: #fff;
+}
+.layui-tab-card .layui-tab-content {
+  position: absolute;
+  top: 40px;
+  bottom: 0;
+  margin: auto;
+  padding: 0;
+  width: 100%;
+}
+.layui-tab-card .layui-tab-content .layui-tab-item {
+  height: 100%;
+}
+.layui-table thead tr {
+  background: #1fb5ac;
+  color: #fff;
+}
+.layui-table td,
+.layui-table th {
+  text-align: center;
+}
+.layui-table .layui-icon {
+  padding: 0 10px;
+  font-size: 20px;
+}
+/* 表单样式 */
+.span1,
+.span2,
+.span3,
+.span4,
+.span5,
+.span6,
+.span7,
+.span8,
+.span9 {
+  margin-right: 10px;
+}
+.span1 {
+  width: 80px;
+}
+.span2 {
+  width: 170px;
+}
+.span3 {
+  width: 260px;
+}
+.span4 {
+  width: 350px;
+}
+.span5 {
+  width: 440px;
+}
+.span6 {
+  width: 530px;
+}
+.span7 {
+  width: 620px;
+}
+.span8 {
+  width: 710px;
+}
+.span9 {
+  width: 800px;
 }

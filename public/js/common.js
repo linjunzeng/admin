@@ -13,7 +13,7 @@ layui.use(['element'], function(){
             $(this).attr('tab-id', id);
             element.tabAdd('tab', {
                 title: title,
-                content: '<iframe id='+ id +' style="width: 100%;" src='+ url +'></iframe>',
+                content: '<iframe id='+ id +' style="width: 100%;height: 100%;" src='+ url +'></iframe>',
                 id: id
             })
         }else{

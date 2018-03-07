@@ -1,6 +1,46 @@
 include ../layouts/header
     div.content
-        div 123456
-        div 123456
-        div 123456
+        fieldset.layui-elem-field
+            legend 筛选列表
+            div.layui-field-box 
+                form.layui-form
+                    div.layui-form-item
+                        label.layui-form-label 商品id
+                        div.layui-input-block
+                            input.layui-input.span4(type="text" name="id" placeholder="请输入商品id" autocomplete="off")
+                    div.layui-form-item
+                        label.layui-form-label 商品标题
+                        div.layui-input-block
+                            input.layui-input.span4(type="text" name="name" placeholder="请输入商品标题" autocomplete="off")
+                    div.layui-form-item
+                        label.layui-form-label 商品价格
+                        div.layui-input-block
+                            input.layui-input.span4(type="text" name="price" placeholder="请输入商品价格" autocomplete="off")
+                    div.layui-form-item
+                        div.layui-input-block
+                            button.layui-btn(type="submit" lay-submit lay-filter="formDemo") 立即提交
+                            button.layui-btn.layui-btn-primary(type="reset") 重置
+
+
+        table.layui-table(lay-skin="line")
+            colgroup
+                col(width="150")
+                col
+                col(width="150")
+                col(width="150")
+            thead
+                tr
+                    th 商品id
+                    th 商品标题
+                    th 商品价格
+                    th 操作
+            tbody
+                each val, k in data.list
+                    tr
+                        td #{val.id}
+                        td #{val.name}
+                        td #{val.price}
+                        td 
+                            a.layui-icon(href="") &#xe642;
+                            a.layui-icon(href="") &#xe640;
 include ../layouts/footer
